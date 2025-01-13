@@ -54,3 +54,10 @@ John Doe at HR with role/s: [Administrator, Team Coordinator]
 Removing a role of administrator...
 John Doe at HR with role/s: [Team Coordinator]
 ```
+
+## Task 3
+Using `Objects.requireNonNull()` for efficient null check on the `name` field in `Person2`:
+
+    public Person2(String name) {
+        this.name = Objects.requireNonNull(name, "Name cannot be null");
+    }
