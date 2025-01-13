@@ -13,9 +13,7 @@ public class Employee {
         this.name = Objects.requireNonNull(name, "Name must be chosen for employee.");
         this.department = Objects.requireNonNull(department, "Department must be chosen for employee");
         this.roles = new ArrayList<>();
-        if (initalRole != null) {
-            this.roles.add(initalRole);
-        }
+        addRole(initalRole);
     }
 
     public String name() {
@@ -33,6 +31,12 @@ public class Employee {
     public void addRole(Role role) {
         if (!roles.contains(role) && role != null) {
             this.roles.add(role);
+        }
+    }
+
+    public void removeRole(Role role) {
+        if (roles.contains(role)) {
+            this.roles.remove(role);
         }
     }
 

@@ -18,14 +18,19 @@ public class Main {
         List<Person> persons = Storage.fetchPersons();
 
         System.out.println(persons);
+        Role admin = new Role("Administrator");
+        Role teamCoordinator = new Role("Team Coordinator");
 
-        Employee employee1 = new Employee("John Doe", "HR",
-                new Role("Administrator"));
+        Employee employee1 = new Employee("John Doe", "HR", admin);
 
         System.out.println(employee1);
         System.out.println();
         System.out.println("Adding a new role...");
-        employee1.addRole(new Role("Team coordinator"));
+        employee1.addRole(teamCoordinator);
+        System.out.println(employee1);
+        System.out.println();
+        System.out.println("Removing a role of administrator...");
+        employee1.removeRole(admin);
         System.out.println(employee1);
     }
 }
