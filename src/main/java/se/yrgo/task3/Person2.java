@@ -1,5 +1,7 @@
 package se.yrgo.task3;
 
+import java.util.Objects;
+
 public class Person2 {
 
     private String name;
@@ -7,16 +9,16 @@ public class Person2 {
     private String email;
 
     public Person2(String name) {
-        this.name = name;
+        this.name = Objects.requireNonNull(name, "Name cannot be null");
     }
 
     public Person2(String name, String email) {
-        this.name = name;
+        this(name);
         this.email = email;
     }
 
     public Person2(String name, String email, String phone) {
-        this.name = name;
+        this(name);
         this.email = email;
         this.phone = phone;
     }
