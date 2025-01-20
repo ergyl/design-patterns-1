@@ -1,10 +1,16 @@
 package se.yrgo;
 
 import se.yrgo.domain.Album;
+import se.yrgo.domain.GenreFilter;
+import se.yrgo.domain.GenreFilterExcludePop;
+import se.yrgo.domain.GenreFilterPopOnly;
 
 public class TestAlbum {
 
     public static void main(String[] args) {
+        GenreFilterExcludePop filterNoPop = new GenreFilterExcludePop();
+        GenreFilterPopOnly filterOnlyPop = new GenreFilterPopOnly();
+
         Album[] albums = {
                 new Album("Hotel California", "Eagles", Album.Genre.ROCK),
                 new Album("Best of", "J.S. Bach", Album.Genre.CLASSICAL),
@@ -14,12 +20,18 @@ public class TestAlbum {
                 new Album("Best of", "Mozart", Album.Genre.CLASSICAL),
                 new Album("Thank you for the music", "ABBA", Album.Genre.POP)
         };
-        printAlbums(albums);
+        System.out.println("Task 1: No pop albums...");
+        printAlbums(albums, filterNoPop);
+        System.out.println();
+        System.out.println("Task 2: Pop albums only...");
+        printAlbums(albums, filterOnlyPop);
     }
 
-    static void printAlbums(Album[] albums) {
+    static void printAlbums(Album[] albums, GenreFilter filter) {
         for (Album a : albums) {
-            System.out.println(a);
+            if (filter.include(a)) {
+                System.out.println(a);
+            }
         }
     }
 }
